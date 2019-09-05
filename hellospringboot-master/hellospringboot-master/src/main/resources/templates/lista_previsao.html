@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Maju Falou</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Previsao</h1>
+		</div>
+		<form class="form-inline" method="post" th:object="${previsao}" th:action="@{/previsao}" style="margin: 20px 0">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Dia da Semana" th:field="*{diaDaSemana}"/> 
+				<input type="text" class="form-control" placeholder="Temperatura" th:field="*{temperatura}"/>
+				<button type="submit" class="btn btn-primary">Adicionar</button>
+			</div>
+		</form>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Dia da Semana</th>
+						<th>Temperatura</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="previsao : ${previsao}">
+						<td th:text="${previsao.diaDaSemana}"></td>
+						<td th:text="${previsao.temperatura}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</body>
+</html>
